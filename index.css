@@ -1,0 +1,251 @@
+html {
+    box-sizing: border-box;
+  }
+
+
+*, *:before, *:after  {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}    
+
+p {
+    margin: 0;
+}
+
+a{
+    cursor: pointer;
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+   
+}
+a:before{
+   content:"";
+   position: absolute;
+   z-index: -1;
+   width: 55%;
+   height: 0.3rem;
+   bottom: -0.2em;
+   background-color: #fff;
+}
+
+
+.vert-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-color{
+    background-color: rgba(249, 196, 215, 0.4); 
+    border-radius: 5px; 
+    text-shadow: 1px 1px 2px #1c1b1b;
+}
+
+
+body {
+    margin: 0;
+    padding:1em;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: "Ubuntu", sans-serif;
+    font-family: "Sarabun", sans-serif;
+    font-size: 1.1rem;
+    color: #fff;
+    text-shadow: 2px 2px 2px #1c1b1b;
+    max-height: 100vh;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+    grid-template-areas: 
+    "activity"
+    "link "
+    "quote"
+    "date"
+    "weather"
+    "currency" 
+    "author";
+   
+}
+
+@media (min-width:500){
+    body{
+       font-size: 0.9rem;
+       grid-template-columns: 1fr 1fr;
+       grid-template-areas: 
+    "activity activity"
+    "link link "
+    "quote quote"
+    "date date"
+    "weather weather"
+    "currency currency" 
+    "author author";
+    }
+}
+
+@media(min-width:870px){
+
+    body {
+        padding: 1.5em 1em 1em 1.75em;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows:repeat(10, 1fr) ;
+        row-gap:0;
+        grid-template-areas: 
+        "activity activity activity link link . . quote quote quote quote ."
+        ". . . . . . . quote quote quote quote ."
+        ". . . . . . . . . . . ."
+        ". . . . date date date . . . . ."
+        ". . . . date date date . . . . ."
+        ". . . . date date date . . . . ."
+        ". . . . . . . . . . . ."
+        " . weather weather weather weather . . . currency currency currency .  "
+        ". . . . . . . . . . . ."
+        " . . . . . . .  . . author author author ";
+    } 
+}
+
+
+.section-activity,
+.section-quote,
+.section-weather,
+.section-author {
+    text-align: left;
+}
+
+.section-activity{
+    grid-area: activity;
+    row-gap: 0.5em;
+    padding:  0 1.1em; 
+}
+
+.section-link{
+    grid-area:link;
+    font-size: 1.2rem;
+    margin-right: 1em;
+    display: flex;
+    column-gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.section-link a{
+    padding: 1em;
+    flex-basis: 100%;
+}
+
+.section-link a:before{
+   width: 45%;
+   bottom:0.9em;
+  
+}
+
+.scrimba{
+    background-color: rgba(220, 180, 188, 0.35); 
+    font-family: "Poetsen One", sans-serif;
+    letter-spacing: 0.5px;
+   
+}
+
+.scrimba:before{
+    background: linear-gradient(260deg, rgba(236,199,110,1) 0%, rgba(165,53,244,1) 100%);
+}
+
+.section-quote{
+    grid-area: quote;
+}
+
+.section-quote blockquote{
+    row-gap: 0.5em;
+} 
+
+.quote-text{
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.quote-text a{
+    font-style:normal;
+    padding-left: 0.75em;
+}
+
+.quote-text a::before{
+    height: 0.2em;
+}
+
+
+.section-date{
+   grid-area: date;
+   padding: 1em 0.6em;
+   line-height: 1.6;
+   font-size: 1.9rem;
+   font-weight: 900;
+   align-content: center;
+   text-align: center;
+}
+
+
+.section-weather{
+    grid-area:weather;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    padding: 0 1em;
+}
+ 
+
+.weather-header{
+  margin-top: 0.75em;
+}
+
+.weather-icon{
+    align-self: center;
+}
+
+.weather-icon img{
+    width: 80%;
+}
+
+.weather-details{
+    display: flex;
+    gap:2em;
+    align-items: center;
+    justify-content:left;
+    text-align: left;
+}
+
+.section-currency{
+    grid-area: currency;
+    padding: 1em 1em 1em 1.75em;
+    row-gap: 0.5em;
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+.bold-text{
+    font-weight: bold;
+}
+
+.currency-rate{
+    line-height: 1.5;
+    text-align: left;
+}
+
+.currency-rate span{
+    padding-right: 0.5em;
+}
+
+.section-author{
+    grid-area: author;
+}
+
+.section-author a:before{
+    width: 68%;
+    height: 0.2em;
+}
+
