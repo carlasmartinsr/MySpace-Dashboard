@@ -99,7 +99,7 @@ body {
         grid-template-areas: 
         "activity activity activity . . . . quote quote quote quote ."
         ". . . . . . . quote quote quote quote ."
-        ". . . link link link link link . . . ."
+        ". . . . link link link . . . . ."
         ". . . . date date date . . . . ."
         ". . . . date date date . . . . ."
         ". . . . date date date . . . . ."
@@ -132,38 +132,26 @@ body {
     align-items: center; 
     position: relative;
     row-gap: 1em;
+    column-gap: 1em;
     padding: 0 0.5em 0 0;
 }
 
 
-@media (min-width:870px){
+@media (min-width:500px){
 
     .section-link{
         font-size: 1.1rem;
-        justify-content:space-between;
         flex-wrap: nowrap;
-        column-gap: 1em;
         row-gap: 0;
-        padding: 0;
-    }
-
-    .link-container{
-        justify-content:space-between;
-      
+        padding: 0m;
     }
  
    
 } 
+ 
+ 
 
-.link-container{
-    display: flex;
-    column-gap: 1em; 
-    align-items: center;
-}
-
-
-
- .btn-update{
+.btn-update{
     cursor: pointer;
     font-size: inherit;
     border-radius: 5px;
@@ -173,48 +161,26 @@ body {
     background-color: rgba(255, 255, 255, 0.407);
 }
 
-
 .btn-update:active{
     background-color: rgba(255, 255, 255, 0.616);
 }
 
 
-.link-container a, .btn-update {
-    height:3em;
+.section-link a, .btn-update {
+    height:3.2em;
     padding: 0.8em;
     text-align: center;
- 
-    flex: 0 1 calc(30% - 0.5em); 
-  
-  
+    flex: 1;
 }
 
-@media (min-width:500px){
-
-    .btn-update{
-       margin-left: 0;
-    }
-    
-    .section-link a,
-    .btn-update {
-        height: 3.25em;
-        width:5em
-    }
-   
-} 
 
 
-
-
-.section-link a {
-    margin-right: 1em;
-
-}
 
 .section-link a:before{
    width: 45%;
    bottom:0.9em;
 }
+
 
 .scrimba{
     background-color: rgba(220, 180, 188, 0.35); 
@@ -331,7 +297,7 @@ body {
     padding: 1.5em;
     font-size: 1em;
     left: 9%;
-    top: 35%;
+    top: 32%;
     border-radius: 7px;
 }
 
@@ -348,10 +314,11 @@ body {
 @media (min-width:870px){
 
     .modal{
-        left: 59%;
+        left: 58%;
         top: 35%;
     }
  
+   
 } 
 
 
@@ -396,7 +363,7 @@ body {
 }
 
  .modal-close:active{
-    color:#d6d5d5;
+    color:#faf4f4;
 }
 
 .modal-close::before{
