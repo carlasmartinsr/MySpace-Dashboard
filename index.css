@@ -331,7 +331,7 @@ body {
 @media (min-width:870px){
 
     .modal{
-        left: 58%;
+        left: 59%;
         top: 35%;
     }
  
@@ -369,13 +369,17 @@ body {
 }
 
 .btn-container button:active{
-    background-color:#fefefe;
+    background-color:#faf4f4;
 }
 
 .modal-close{
     position: absolute;
     right: 1em;
     top: 0.5em;
+}
+
+ .modal-close:active{
+    color:#d6d5d5;
 }
 
 .modal-close::before{
