@@ -4,6 +4,11 @@ const sectionweather = document.getElementById("section-weather")
 const sectionDate = document.getElementById("section-date")
 const sectionQuote = document.getElementById("section-quote")
 const sectionActivity = document.getElementById("section-activity")
+const btnUpdate = document.getElementById("btn-update")
+const modal = document.getElementById("modal")
+const sectionLink = document.getElementById("section-link")
+const linkContainer = document.getElementById("link-container")
+let links=[]
 
 
 async function getBgImg(){
@@ -115,7 +120,7 @@ try {
 	const result = await response.json();
 	console.log(result);
     const quoteContent = result.content;
-     if (quoteContent.length>=140 ){
+     if (quoteContent.length>=140){
         const newQuote=quoteContent.slice(0,140)
         sectionQuote.innerHTML=`
             <blockquote class="vert-flex">
@@ -161,6 +166,122 @@ async function getRamdomActivities(){
     }
 }
 
+function capitalizedDomain(domain){
+    return domain.charAt(0).toUpperCase() + domain.slice(1)
+}
+
+
+function generateDefaultLinksHTML(){
+   return  `<a href="https://scrimba.com/#overview" class="anchor bg-color scrimba"  target="_blank">Scrimba</a>
+    <a href="https://google.com/" class="anchor bg-color"   target="_blank">Google</a>
+    <a href="https://linkedin.com/in/carla-martins-378a0223b/"  class="anchor bg-color"  target="_blank">Linkedin</a>
+    `  
+}
+
+function generateLinksHTML(linksData){
+    let className=""
+    let linksHTML=""
+    linksData.forEach((link) =>{
+        console.log("paso")
+        let newDomain= capitalizedDomain(link.domain)
+        if (newDomain==="Scrimba"){
+            className="scrimba"
+        } 
+        else {className=" "
+
+        }
+        linksHTML+= `<a href="${link.url}"  class="anchor bg-color ${className}"  target="_blank">${newDomain}</a>`
+        console.log(linksHTML)
+    })
+    console.log(linksHTML)
+    return linksHTML
+}
+
+
+
+
+function loadLinks(){
+    const storedLinks = localStorage.getItem("links") 
+    let linksData
+    let newLinks=[]
+    let linksHTML=""
+    
+    if (storedLinks===null){
+        linksHTML=generateDefaultLinksHTML()
+    }
+    else{
+        linksData = JSON.parse(storedLinks)
+        if (linksData.length>0 ){
+            linksHTML = generateLinksHTML(linksData)
+        } 
+        else{
+            linksHTML=generateDefaultLinksHTML()
+        }
+       
+    }
+    linkContainer.innerHTML = linksHTML
+    document.querySelectorAll('.anchor').forEach((link,index)=>{
+        newLinks[index]={
+            url:link.href,
+            domain:link.textContent
+            }
+        }) 
+    localStorage.setItem("links", JSON.stringify(newLinks)); 
+}
+
+function exitModal(){
+    modal.style.display="none"
+    modal.style.visibility="hidden";
+    modal.style.opacity=0; 
+}
+
+function addNewLink(){
+    let linksHTML=""
+    const urlInput = document.getElementById("url-site")
+    const urlSite = urlInput.value.trim()
+    const validUrl = URL.canParse(urlSite)
+    console.log(links)
+    if(validUrl){
+        let domain =  urlSite.replace( /https:\/\//g, '')
+        let obtainDomain =  domain.split('.')[0]
+        let newDomain= capitalizedDomain(obtainDomain)
+        const repetedDomain = links.some((link)=> link.domain===newDomain)
+        if(!repetedDomain){
+           let newLink={ 
+                url:urlSite,
+                domain:newDomain
+       
+            }
+            if (links.length === 3) {
+                links.splice(2, 1); 
+            }
+        
+            links.splice(1, 0, newLink); 
+            console.log(links);
+
+           linksHTML = generateLinksHTML(links);
+      
+        urlInput.value=""
+        linkContainer.innerHTML = linksHTML
+        localStorage.setItem("links", JSON.stringify(links));
+        exitModal()
+       
+        }
+        
+    } 
+}
+
+
+
+function updateLink(){
+    modal.style.visibility="visible";
+    modal.style.opacity=1;
+    modal.style.display="block"
+    const storedLinks = localStorage.getItem("links")
+    links =JSON.parse(storedLinks)||[]  
+}
+
+
 document.addEventListener("DOMContentLoaded",function(){
     changeBackgroundImage()
     getcurrency()
@@ -168,5 +289,23 @@ document.addEventListener("DOMContentLoaded",function(){
     getCurrentDate()
     getQuotes()
     getRamdomActivities()
+    loadLinks()
+   
 })
 
+
+document.addEventListener("click",function(e){
+    if(e.target.id==="btn-update"){
+        updateLink(); 
+    }
+    if(e.target.id==="btn-add"){
+       
+        addNewLink()
+    }
+    if (e.target.id==="btn-cancel"){
+        exitModal()
+    }
+    if(e.target.id==="modal-close"){
+        exitModal()
+    }
+})

@@ -60,7 +60,7 @@ body {
     display: grid;
     align-items: center;
     grid-template-columns: 1fr;
-    row-gap: 1em;
+    row-gap: 2.25em;
     grid-template-areas: 
     "activity"
     "link "
@@ -79,12 +79,14 @@ body {
        grid-template-areas: 
     "activity activity"
     "link link "
+    "link link "
     "quote quote"
     "date date"
     "weather weather"
     "currency currency" 
     "author author";
     }
+
 }
 
 @media(min-width:870px){
@@ -92,20 +94,19 @@ body {
     body {
         padding: 1.5em 1em 1em 1.75em;
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows:repeat(10, 1fr) ;
-        row-gap:0;
+        grid-template-rows:repeat(8, 1fr) ;
+        row-gap:2em;
         grid-template-areas: 
-        "activity activity activity link link . . quote quote quote quote ."
+        "activity activity activity . . . . quote quote quote quote ."
         ". . . . . . . quote quote quote quote ."
-        ". . . . . . . . . . . ."
+        ". . . link link link link . . . . ."
         ". . . . date date date . . . . ."
         ". . . . date date date . . . . ."
         ". . . . date date date . . . . ."
-        ". . . . . . . . . . . ."
         " . weather weather weather weather . . . currency currency currency .  "
-        ". . . . . . . . . . . ."
         " . . . . . . .  . . author author author ";
     } 
+
 }
 
 
@@ -124,24 +125,78 @@ body {
 
 .section-link{
     grid-area:link;
-    font-size: 1.2rem;
-    margin-right: 1em;
+    font-size: 1rem;
     display: flex;
-    column-gap: 1em;
-    justify-content: center;
+    justify-content:center;
+    flex-wrap: wrap;
+    align-items: center; 
+    position: relative;
+    row-gap: 1em;
+    padding: 0 0.5em 0 0;
+}
+
+
+@media (min-width:500px){
+
+    .section-link{
+        font-size: 1.1rem;
+        justify-content:space-between;
+        flex-wrap: nowrap;
+        row-gap: 0;
+        padding: 0;
+    }
+ 
+   
+} 
+ 
+
+.link-container{
+    display: flex;
+    column-gap: 1em; 
     align-items: center;
 }
+ 
 
-
-.section-link a{
-    padding: 1em;
-    flex-basis: 100%;
+.btn-update{
+    cursor: pointer;
+    font-size: inherit;
+    border-radius: 5px;
+    border: unset;
+    font-weight: bold;
+    color: #3e3e3e;
+    background-color: rgba(255, 255, 255, 0.407);
 }
+
+.btn-update:active{
+    background-color: rgba(255, 255, 255, 0.616);
+}
+
+
+.link-container a, .btn-update {
+    height:3em;
+    padding: 0.8em;
+    text-align: center;
+    flex: 0 0 5em; 
+  
+  
+}
+
+
+@media (min-width:500px){
+
+    .link-container a, .btn-update {
+        height:3.25em;
+       flex: 0 0 6.25em; 
+    }
+   
+} 
+
+
+
 
 .section-link a:before{
    width: 45%;
    bottom:0.9em;
-  
 }
 
 .scrimba{
@@ -249,3 +304,77 @@ body {
     height: 0.2em;
 }
 
+.modal{
+    position: fixed;
+    visibility: hidden;
+    background-color: #BF5F83;
+    display: none;
+    opacity: 0;
+    row-gap: 0.65em;
+    padding: 1.5em;
+    font-size: 1em;
+    left: 9%;
+    top: 32%;
+    border-radius: 7px;
+}
+
+@media (min-width:500px){
+
+    .modal{
+        left: 20%;
+        top: 25%;
+    }
+ 
+   
+} 
+
+@media (min-width:870px){
+
+    .modal{
+        left: 58%;
+        top: 35%;
+    }
+ 
+   
+} 
+
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.modal-content label{
+    text-shadow: 0px 0px 0px;
+    margin: 0.5em 0 0.7em 0;
+}
+
+.modal-content input{
+    padding: 0.3em 0;
+    width: 18em;
+}
+
+.btn-container{
+    margin-top: 1em;
+}
+
+.btn-container button{
+   padding: 0.6em 1.2em;
+   border-radius: 3px;
+   color: #595959;
+   font-weight: bold;
+   border: unset;
+   margin-right: 0.5em;
+   cursor: pointer;
+}
+
+.modal-close{
+    position: absolute;
+    right: 1em;
+    top: 0.5em;
+}
+
+.modal-close::before{
+    width: 0;
+}
