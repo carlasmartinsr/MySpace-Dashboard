@@ -314,7 +314,7 @@ body {
     padding: 1.5em;
     font-size: 1em;
     left: 9%;
-    top: 32%;
+    top: 35%;
     border-radius: 7px;
 }
 
@@ -335,7 +335,6 @@ body {
         top: 35%;
     }
  
-   
 } 
 
 
@@ -367,6 +366,10 @@ body {
    border: unset;
    margin-right: 0.5em;
    cursor: pointer;
+}
+
+.btn-container button:active{
+    background-color:#fefefe;
 }
 
 .modal-close{
