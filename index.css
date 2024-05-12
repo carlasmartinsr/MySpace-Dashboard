@@ -293,7 +293,7 @@ body {
     padding: 1.5em;
     font-size: 1em;
     left: 9%;
-    top: 32%;
+    top: 34%;
     border-radius: 7px;
 }
 
@@ -301,7 +301,7 @@ body {
 
     .modal{
         left: 20%;
-        top: 25%;
+        top: 27%;
     }
  
    
@@ -311,11 +311,12 @@ body {
 
     .modal{
         left: 58%;
-        top: 35%;
+        top: 36%;
     }
  
    
 } 
+
 
 
 .modal-content{
