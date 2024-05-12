@@ -7,7 +7,7 @@ const sectionActivity = document.getElementById("section-activity")
 const btnUpdate = document.getElementById("btn-update")
 const modal = document.getElementById("modal")
 const sectionLink = document.getElementById("section-link")
-const linkContainer = document.getElementById("link-container")
+
 let links=[]
 
 
@@ -175,6 +175,7 @@ function generateDefaultLinksHTML(){
    return  `<a href="https://scrimba.com/#overview" class="anchor bg-color scrimba"  target="_blank">Scrimba</a>
     <a href="https://google.com/" class="anchor bg-color"   target="_blank">Google</a>
     <a href="https://linkedin.com/in/carla-martins-378a0223b/"  class="anchor bg-color"  target="_blank">Linkedin</a>
+    <button class="btn-update" id="btn-update"> Add + </button>
     `  
 }
 
@@ -193,6 +194,7 @@ function generateLinksHTML(linksData){
         linksHTML+= `<a href="${link.url}"  class="anchor bg-color ${className}"  target="_blank">${newDomain}</a>`
         console.log(linksHTML)
     })
+    linksHTML+=`<button class="btn-update" id="btn-update"> Add + </button>`
     console.log(linksHTML)
     return linksHTML
 }
@@ -219,7 +221,7 @@ function loadLinks(){
         }
        
     }
-    linkContainer.innerHTML = linksHTML
+    sectionLink.innerHTML = linksHTML
     document.querySelectorAll('.anchor').forEach((link,index)=>{
         newLinks[index]={
             url:link.href,
@@ -262,7 +264,7 @@ function addNewLink(){
            linksHTML = generateLinksHTML(links);
       
         urlInput.value=""
-        linkContainer.innerHTML = linksHTML
+        sectionLink.innerHTML = linksHTML
         localStorage.setItem("links", JSON.stringify(links));
         exitModal()
        

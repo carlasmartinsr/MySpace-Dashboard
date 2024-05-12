@@ -149,7 +149,6 @@ body {
    
 } 
  
- 
 
 .btn-update{
     cursor: pointer;
@@ -172,9 +171,6 @@ body {
     text-align: center;
     flex: 1;
 }
-
-
-
 
 .section-link a:before{
    width: 45%;
