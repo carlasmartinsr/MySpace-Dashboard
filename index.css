@@ -99,7 +99,7 @@ body {
         grid-template-areas: 
         "activity activity activity . . . . quote quote quote quote ."
         ". . . . . . . quote quote quote quote ."
-        ". . . link link link link . . . . ."
+        ". . . link link link link link . . . ."
         ". . . . date date date . . . . ."
         ". . . . date date date . . . . ."
         ". . . . date date date . . . . ."
@@ -142,22 +142,28 @@ body {
         font-size: 1.1rem;
         justify-content:space-between;
         flex-wrap: nowrap;
+        column-gap: 1em;
         row-gap: 0;
         padding: 0;
+    }
+
+    .link-container{
+        justify-content:space-between;
+      
     }
  
    
 } 
- 
 
 .link-container{
     display: flex;
     column-gap: 1em; 
     align-items: center;
 }
- 
 
-.btn-update{
+
+
+ .btn-update{
     cursor: pointer;
     font-size: inherit;
     border-radius: 5px;
@@ -168,24 +174,6 @@ body {
 }
 
 
-@media (min-width:500px){
-
-    .btn-update{
-       margin-left: 2em;
-    }
- 
-   
-} 
-
-@media (min-width:870px){
-
-    .btn-update{
-       margin-left: 0;
-    }
- 
-   
-} 
-
 .btn-update:active{
     background-color: rgba(255, 255, 255, 0.616);
 }
@@ -195,23 +183,33 @@ body {
     height:3em;
     padding: 0.8em;
     text-align: center;
-    flex: 0 0 5em; 
+ 
+    flex: 0 1 calc(30% - 0.5em); 
   
   
 }
 
+@media (min-width:500px){
 
-@media (min-width:870px){
-
-    .link-container a, .btn-update {
-        height:3.25em;
-       flex: 0 0 6.25em; 
+    .btn-update{
+       margin-left: 0;
+    }
+    
+    .section-link a,
+    .btn-update {
+        height: 3.25em;
+        width:5em
     }
    
 } 
 
 
 
+
+.section-link a {
+    margin-right: 1em;
+
+}
 
 .section-link a:before{
    width: 45%;
