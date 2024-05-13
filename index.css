@@ -51,7 +51,7 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    font-family: "Ubuntu", sans-serif;
+    font-family:3 "Ubuntu", sans-serif;
     font-family: "Sarabun", sans-serif;
     font-size: 1.1rem;
     color: #fff;
@@ -125,7 +125,7 @@ body {
 
 .section-link{
     grid-area:link;
-    font-size: 1rem;
+    font-size: 1.1rem;
     display: flex;
     justify-content:center;
     flex-wrap: wrap;
@@ -133,22 +133,7 @@ body {
     position: relative;
     row-gap: 1em;
     column-gap: 1em;
-    padding: 0 0.5em 0 0;
 }
-
-
-@media (min-width:500px){
-
-    .section-link{
-        font-size: 1.1rem;
-        flex-wrap: nowrap;
-        row-gap: 0;
-        padding: 0m;
-    }
- 
-   
-} 
- 
 
 .btn-update{
     cursor: pointer;
