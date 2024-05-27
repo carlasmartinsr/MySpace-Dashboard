@@ -170,7 +170,7 @@ async function getRamdomActivities(){
     const apiUrl = "/api/activity";
 
     try {
-        const res = await fetch(proxyUrl + apiUrl);
+        const res = await fetch(apiUrl);
         const data = await res.json();
         console.log(data);
         sectionActivity.innerHTML = `
