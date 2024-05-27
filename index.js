@@ -146,9 +146,9 @@ try {
 }
 
 
-/* async function getRamdomActivities(){
+ async function getRamdomActivities(){
     try{
-        const res= await fetch("http://www.boredapi.com/api/activity/")
+        const res= await fetch("https://bored-api.appbrewery.com/random")
         const data =  await res.json()
         console.log(data)
         console.log(data.activity)
@@ -164,25 +164,8 @@ try {
       <p>Look at pictures and videos of cute animals</p>
      ` 
     }
-} */
+} 
 
-async function getRamdomActivities(){
-    const apiUrl = "/api/activity";
-
-    try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        console.log(data);
-        sectionActivity.innerHTML = `
-            <p>Feeling a bit bored?😕</p>
-            <p>${data.activity}</p>`;
-    } catch (e) {
-        console.log(e);
-        sectionActivity.innerHTML = `
-            <p>Feeling a bit bored?😕</p>
-            <p>Look at pictures and videos of cute animals</p>`;
-    }
-}
 
 
 function capitalizedDomain(domain){
