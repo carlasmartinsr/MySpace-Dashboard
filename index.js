@@ -146,9 +146,9 @@ try {
 }
 
 
- async function getRamdomActivities(){
+/* async function getRamdomActivities(){
     try{
-        const res= await fetch("https://bored-api.appbrewery.com/random")
+        const res= await fetch("http://www.boredapi.com/api/activity/")
         const data =  await res.json()
         console.log(data)
         console.log(data.activity)
@@ -164,8 +164,35 @@ try {
       <p>Look at pictures and videos of cute animals</p>
      ` 
     }
-} 
+} */ 
+ 
 
+
+async function getRamdomHobby(){
+    const apiUrl = 'https://api.api-ninjas.com/v1/hobbies' 
+    const apiKey= 'rGGnC5l9NRr9mssWfzklJw==2aLUsauobIWbzALw'
+
+ try {
+    const res = await fetch(apiUrl, {
+        headers: {
+            'X-Api-Key': apiKey
+        }
+    });
+    if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const data = await res.json();
+    console.log(data);
+    document.getElementById("section-activity").innerHTML = `
+        <p>Exploring new hobbies? 🤔</p>
+        <p>${data.hobby}</p>`;
+} catch (e) {
+    console.log(e);
+    document.getElementById("section-activity").innerHTML = `
+        <p>Exploring new hobbies?🤔</p>
+        <p>Road biking</p>`;
+}
+} 
 
 
 function capitalizedDomain(domain){
@@ -292,7 +319,7 @@ document.addEventListener("DOMContentLoaded",function(){
     getWeather()
     getCurrentDate()
     getQuotes()
-    getRamdomActivities()
+    getRamdomHobby()
     loadLinks()
    
 })
