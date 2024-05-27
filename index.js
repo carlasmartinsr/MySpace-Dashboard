@@ -167,8 +167,7 @@ try {
 } */
 
 async function getRamdomActivities(){
-    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-    const apiUrl = "http://www.boredapi.com/api/activity/";
+    const apiUrl = "/api/activity";
 
     try {
         const res = await fetch(proxyUrl + apiUrl);
