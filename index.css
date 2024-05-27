@@ -171,7 +171,7 @@ body {
 }
 
 .scrimba:before{
-    background: linear-gradient(260deg, rgba(236,199,110,1) 0%, rgba(165,53,244,1) 100%);
+    background: linear-gradient(260deg, rgb(236, 110, 177) 0%, rgba(165,53,244,1) 100%);
 }
 
 .section-quote{

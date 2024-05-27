@@ -146,7 +146,7 @@ try {
 }
 
 
-async function getRamdomActivities(){
+/* async function getRamdomActivities(){
     try{
         const res= await fetch("http://www.boredapi.com/api/activity/")
         const data =  await res.json()
@@ -164,7 +164,27 @@ async function getRamdomActivities(){
       <p>Look at pictures and videos of cute animals</p>
      ` 
     }
+} */
+
+async function getRamdomActivities(){
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const apiUrl = "http://www.boredapi.com/api/activity/";
+
+    try {
+        const res = await fetch(proxyUrl + apiUrl);
+        const data = await res.json();
+        console.log(data);
+        sectionActivity.innerHTML = `
+            <p>Feeling a bit bored?😕</p>
+            <p>${data.activity}</p>`;
+    } catch (e) {
+        console.log(e);
+        sectionActivity.innerHTML = `
+            <p>Feeling a bit bored?😕</p>
+            <p>Look at pictures and videos of cute animals</p>`;
+    }
 }
+
 
 function capitalizedDomain(domain){
     return domain.charAt(0).toUpperCase() + domain.slice(1)
