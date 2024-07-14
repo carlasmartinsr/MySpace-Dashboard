@@ -201,7 +201,7 @@ function capitalizedDomain(domain){
 
 
 function generateDefaultLinksHTML(){
-   return  `<a href="https://scrimba.com/#overview" class="anchor bg-color scrimba"  target="_blank">Scrimba</a>
+   return  `<a href="https://scrimba.com/" class="anchor bg-color scrimba"  target="_blank">Scrimba</a>
     <a href="https://google.com/" class="anchor bg-color"   target="_blank">Google</a>
     <a href="https://linkedin.com/in/carla-martins-378a0223b/"  class="anchor bg-color"  target="_blank">Linkedin</a>
     <button class="btn-update" id="btn-update"> Add + </button>
@@ -212,7 +212,6 @@ function generateLinksHTML(linksData){
     let className=""
     let linksHTML=""
     linksData.forEach((link) =>{
-        console.log("paso")
         let newDomain= capitalizedDomain(link.domain)
         if (newDomain==="Scrimba"){
             className="scrimba"
@@ -301,7 +300,6 @@ function addNewLink(){
         
     } 
 }
-
 
 
 function updateLink(){
